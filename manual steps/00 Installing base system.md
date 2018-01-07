@@ -14,3 +14,5 @@ We are just using Raspbian Lite.
 8. Run raspbian configuration tool to resize your partition and reboot
 9. [Configure initial WiFi connection](https://thepihut.com/blogs/raspberry-pi-tutorials/83502916-how-to-setup-wifi-on-raspbian-jessie-lite) ([more details](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md))
 10. update and upgrade
+
+Pending: configure USB Gadget to work everywhere without drivers. See [PoisonTap](https://github.com/samyk/poisontap)
