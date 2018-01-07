@@ -1,0 +1,6 @@
+Resources:
+
+https://github.com/sabhiram/raspberry-wifi-conf/blob/master/app/wifi_manager.js
+https://github.com/rockymeza/wifi
+https://linux.die.net/man/5/wpa_supplicant.conf
+https://github.com/billz/raspap-webgui
