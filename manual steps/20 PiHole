@@ -1,0 +1,6 @@
+# Installing PiHole
+
+`curl -sSL https://install.pi-hole.net | bash`
+
+when asked for static ip choose `10.254.239.1/24` and router `10.254.239.1`
+
