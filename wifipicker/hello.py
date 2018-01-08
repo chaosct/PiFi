@@ -22,13 +22,8 @@ def aps():
 
 @app.route('/ap/<apname>')
 def connect_ap(apname):
-    html = []
-    html.append('<html><head><title>Connect AP</title></head><body>')
-    html.append('<h1>Connecting to {}</h1>'.format(escape(apname)))
     pw = passwords.get(apname,'')
-    html.append('<form action="/ap/{apname}/connect" method="post"><input type="password" name="PW" value="{pw}"><br><input type="submit" value="Connect"></form>'.format(pw=escape(pw),apname=escape(apname)))
-    html.append('</body></html>')
-    return "\n".join(html)
+    return render_template('ap_connect.html',apname=apname,pw=pw)
 
 @app.route('/ap/<apname>/connect', methods=['POST'])
 def connect_ap_now(apname):
