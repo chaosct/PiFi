@@ -1,26 +1,24 @@
 from subprocess import run
 import shelve
 from wifi import Cell
-from flask import Flask, escape, request
+from flask import Flask, escape, request, render_template, jsonify
 app = Flask(__name__)
 
 passwords = shelve.open('saved_pw')
 
 @app.route("/")
 def hello():
-    return "Hello World!"
+    cells = AP_list()
+    return render_template('ap_list.html', cells=cells)
 
-@app.route('/aps')
 def AP_list():
     run(['sudo','iwlist','wlan0','scan'])
-    html = []
-    html.append('<html><head><title>WiFi Setup</title></head><body>')
-    html.append('<ul>')
-    for ap in Cell.all('wlan0'):
-        html.append('<li><a href="/ap/{0}">{0}</a></li>'.format(escape(ap.ssid)))
-    html.append('</ul>')
-    html.append('</body></html>')
-    return "\n".join(html)
+    cells = [vars(c) for c in Cell.all('wlan0')]
+    return sorted(cells, key=lambda c: c['quality'], reverse=True)
+
+@app.route('/aps')
+def aps():
+    return jsonify({'APs':AP_list()})
 
 @app.route('/ap/<apname>')
 def connect_ap(apname):

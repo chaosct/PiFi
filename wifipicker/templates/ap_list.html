@@ -1,0 +1,10 @@
+<html>
+	<head><title>WiFi Setup</title></head>
+	<body>
+		<ul>
+			{% for ap in cells %}
+			<li><a href="/ap/{{ ap.ssid }}">{{ ap.ssid }} ({{ ap.quality }})</a></li>
+			{% endfor %}
+		</ul>
+	</body>
+</html>	
