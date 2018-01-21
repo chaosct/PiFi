@@ -30,3 +30,4 @@ def connect_ap_now(apname):
     passwords[apname]=request.form.get('PW','')
     passwords.sync()
     return "Done"
+

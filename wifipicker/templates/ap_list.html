@@ -1,5 +1,10 @@
 <html>
-	<head><title>WiFi Setup</title></head>
+	<head>
+		<title>WiFi Setup</title>
+		<script type="text/javascript">
+			let AP_list = {{ cells|tojson }}
+		</script>
+	</head>
 	<body>
 		<ul>
 			{% for ap in cells %}
