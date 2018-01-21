@@ -1,4 +1,4 @@
-from subprocess import run
+from subprocess import run, PIPE
 import shelve
 from wifi import Cell
 from flask import Flask, escape, request, render_template, jsonify
@@ -12,7 +12,7 @@ def hello():
     return render_template('ap_list.html', cells=cells)
 
 def AP_list():
-    run(['sudo','iwlist','wlan0','scan'])
+    run(['sudo','iwlist','wlan0','scan'], stdout=PIPE)
     cells = [vars(c) for c in Cell.all('wlan0')]
     return sorted(cells, key=lambda c: c['quality'], reverse=True)
 
